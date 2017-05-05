@@ -1,0 +1,2 @@
+b2 toolset=msvc-14.0 --build-type=complete variant=debug link=static threading=multi stage
+address-model=32
