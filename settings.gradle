@@ -1,0 +1,4 @@
+rootProject.name = 'rentgen'
+
+include 'ForCodeFights'
+include 'Studing_for_AlgorithmsInJava'

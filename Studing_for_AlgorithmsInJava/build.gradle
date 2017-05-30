@@ -1,0 +1,22 @@
+dependencies {
+    testCompile rootProject.libraries.junit
+    compile rootProject.libraries.log4j
+    compile rootProject.libraries.algoLibs
+//    compile fileTree(dir:'libs', include:['*.jar'])
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['FirstProgramm/src/main/java', 'FirstProgramm/src/com/example']
+        }
+        resources {
+            srcDirs = ['FirstProgramm/src/resources']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['FirstProgramm/src/test/java']
+        }
+    }
+}

@@ -1,0 +1,35 @@
+ext {
+    jdkVersion = 1.8
+    junitVersion = "4.12"
+    log4jVersion = "2.7"
+}
+
+allprojects {
+    group = "rentgen.github.io"
+    version = "1.0-SNAPSHOT"
+    apply plugin: "java"
+
+    repositories {
+        mavenCentral()
+        flatDir {
+            dirs "$rootProject.projectDir/libs"
+        }
+    }
+
+    sourceCompatibility = jdkVersion
+    targetCompatibility = jdkVersion
+}
+
+// common libraries declaration
+ext.libraries = [
+    junit: "junit:junit:$junitVersion",
+    log4j: [
+        "org.apache.logging.log4j:log4j-api:$log4jVersion",
+        "org.apache.logging.log4j:log4j-core:$log4jVersion"
+    ],
+    algoLibs: [
+        "edu.princeton.cs.algs4:algs4:1.0",
+        ":stdlib:1.0"
+    ]
+]
+

@@ -1,7 +1,3 @@
-import edu.princeton.cs.algs4.ST;
-
-import java.util.*;
-
 /**
  * Created by Western-Co on 27.11.2016.
  */

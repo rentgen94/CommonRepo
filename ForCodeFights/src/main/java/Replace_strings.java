@@ -4,7 +4,7 @@ import java.nio.file.Files;
 /**
  * Created by shurbin on 21.09.2016.
  */
-public class Main {
+public class Replace_strings {
     public static void main(String[] args) {
         File folder = new File("C:\\My folder\\Projects\\TechModel\\techmodel\\libst\\src");
         File[] folderEntries = folder.listFiles();

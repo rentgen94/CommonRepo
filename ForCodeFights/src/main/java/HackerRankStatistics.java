@@ -1,10 +1,13 @@
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class Solution {
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class HackerRankStatistics {
+    private static final Logger log = LogManager.getLogger(HackerRankStatistics.class);
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in).useLocale(Locale.ENGLISH);
         int size = scan.nextInt();
@@ -12,7 +15,6 @@ public class Solution {
         for (int i = 0; i < size; i++) {
             arr.add(scan.nextInt());
         }
-        arr.sort(Integer::compareTo);
         double mean = findMean(arr);
         double median = findMedian(arr);
         int mode = findMode(arr);
@@ -26,10 +28,13 @@ public class Solution {
         for (Integer value : arr) {
             sum += value;
         }
-        return sum/(double) arr.size();
+        double ans = sum/(double) arr.size();
+        log.info("Mean is: " + ans);
+        return ans;
     }
 
     public static double findMedian(ArrayList<Integer> arr) {
+        arr.sort(Integer::compareTo);
         if (arr.size() % 2 == 1) {
             return arr.get(arr.size()/2);
         } else {
@@ -58,6 +63,18 @@ public class Solution {
             }
         }
         ans = arr.get(j);
+        return ans;
+    }
+
+    private static double findWeightedMean(ArrayList<Integer> values, ArrayList<Integer> weights) {
+        double ans = 0.0;
+        double sum = 0.0;
+        double weightSum = 0.0;
+        for (int i = 0; i < values.size(); i++) {
+            sum += values.get(i) * weights.get(i);
+            weightSum += weights.get(i);
+        }
+        ans = sum / weightSum;
         return ans;
     }
 }
