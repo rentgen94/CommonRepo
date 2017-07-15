@@ -1,4 +1,5 @@
 rootProject.name = 'rentgen'
 
-include 'ForCodeFights'
-include 'Studing_for_AlgorithmsInJava'
+//include 'ForCodeFights'
+//include 'Studing_for_AlgorithmsInJava'
+include 'LearnSpring'

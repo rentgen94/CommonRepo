@@ -2,6 +2,7 @@ ext {
     jdkVersion = 1.8
     junitVersion = "4.12"
     log4jVersion = "2.7"
+    springVersion = "4.3.9.RELEASE"
 }
 
 allprojects {
@@ -30,6 +31,7 @@ ext.libraries = [
     algoLibs: [
         "edu.princeton.cs.algs4:algs4:1.0",
         ":stdlib:1.0"
-    ]
+    ],
+    spring: "org.springframework:spring-context:$springVersion"
 ]
 

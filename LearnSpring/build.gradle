@@ -1,0 +1,29 @@
+def mainClass = "ru.example.Test"
+
+dependencies {
+    testCompile rootProject.libraries.junit
+    compile rootProject.libraries.log4j
+    compile rootProject.libraries.spring
+}
+
+jar {
+    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    manifest { attributes 'Main-Class': mainClass }
+}
+
+apply plugin: 'application'
+
+mainClassName = mainClass
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+    }
+}      
