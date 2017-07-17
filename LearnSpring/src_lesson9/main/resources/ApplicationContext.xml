@@ -3,10 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="t1000"
-        class="ru.example.impls.robot.ModelT1000">
-        <constructor-arg ref="sonyHand"/>
-        <constructor-arg ref="sonyLeg"/>
-        <constructor-arg ref="sonyHead"/>
+          class="ru.example.impls.robot.ModelT1000" >
+        <constructor-arg value="silver" index="0" type="String"/>
+        <constructor-arg value="2006" index="1" type="int"/>
+        <constructor-arg value="true" index="2" type="boolean"/>
 
         <property name="hand" ref="toshibaHand"/>
         <property name="head" ref="toshibaHead"/>
