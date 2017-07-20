@@ -32,6 +32,7 @@ ext.libraries = [
         "edu.princeton.cs.algs4:algs4:1.0",
         ":stdlib:1.0"
     ],
-    spring: "org.springframework:spring-context:$springVersion"
+    spring: "org.springframework:spring-context:$springVersion",
+    google_translate: "com.gtranslate:gtranslateapi-1.0:1.0"
 ]
 

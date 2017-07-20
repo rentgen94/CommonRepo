@@ -1,9 +1,19 @@
+def mainClass = "io.github.rentgen94.Main"
+
 dependencies {
     testCompile rootProject.libraries.junit
     compile rootProject.libraries.log4j
-    compile rootProject.libraries.google_translate
-    compile group: 'org.json', name: 'json', version: '20160810'
+    compile rootProject.libraries.spring
 }
+
+jar {
+    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    manifest { attributes 'Main-Class': mainClass }
+}
+
+apply plugin: 'application'
+
+mainClassName = mainClass
 
 sourceSets {
     main {

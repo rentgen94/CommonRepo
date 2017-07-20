@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.rentgen94.Controllers.RootLayoutController">
+   <children>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label prefHeight="40.0" prefWidth="150.0" text="Text in clipboard:" textAlignment="CENTER" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="2.5" />
+                  <TextArea fx:id="textArea" onKeyPressed="#onKeyTranslate" prefHeight="50.0" prefWidth="319.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="40.0" />
+                  <ChoiceBox fx:id="fromLang" prefWidth="50.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0" />
+                  <ToggleButton fx:id="cnangeLang" mnemonicParsing="false" onAction="#changeLang" prefHeight="25.0" prefWidth="60.0" text="Change" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="10.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label prefHeight="40.0" prefWidth="150.0" text="Translate to:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="2.5" />
+                  <TextArea fx:id="translationArea" onKeyPressed="#onKeyTranslate" prefHeight="50.0" prefWidth="320.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="40.0" />
+                  <ChoiceBox fx:id="toLang" prefWidth="50.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0" />
+                  <CheckBox fx:id="checkWrap" layoutX="110.0" layoutY="14.0" mnemonicParsing="false" text="Wrap" AnchorPane.rightAnchor="75.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
