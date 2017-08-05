@@ -33,6 +33,7 @@ ext.libraries = [
         ":stdlib:1.0"
     ],
     spring: "org.springframework:spring-context:$springVersion",
-    google_translate: "com.gtranslate:gtranslateapi-1.0:1.0"
+    aspects: "org.springframework:spring-aspects:4.0.3.RELEASE",
+    cglib: "cglib:cglib:3.2.4",
 ]
 

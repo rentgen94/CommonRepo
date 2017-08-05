@@ -4,6 +4,8 @@ dependencies {
     testCompile rootProject.libraries.junit
     compile rootProject.libraries.log4j
     compile rootProject.libraries.spring
+    compile rootProject.libraries.cglib
+    compile rootProject.libraries.aspects
 }
 
 jar {

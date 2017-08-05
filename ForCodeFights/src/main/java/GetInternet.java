@@ -28,15 +28,17 @@ public class GetInternet {
                 con.connect();
                 int answer = con.getResponseCode();
                 if (answer == 200 || answer == 302) {
-                    System.out.println("Connection established!");
+//                    System.out.println("Connection established!");
                     StringBuffer sb = new StringBuffer();
                     BufferedReader bf = new BufferedReader(new InputStreamReader(con.getInputStream()));
                     String output;
                     while ((output = bf.readLine()) != null) {
                         sb.append(output);
                     }
-                    System.out.println(sb.toString());
-//                    refreshPage();
+                    if (sb.toString().contains("МИФИ")) {
+//                        System.out.println("Must Login to Campus!");
+                        refreshPage();
+                    }
                 } else {
 //                    System.out.println("No connection!");
                     refreshPage();

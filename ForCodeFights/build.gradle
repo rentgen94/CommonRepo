@@ -1,7 +1,6 @@
 dependencies {
     testCompile rootProject.libraries.junit
     compile rootProject.libraries.log4j
-    compile rootProject.libraries.google_translate
     compile group: 'org.json', name: 'json', version: '20160810'
 }
 
