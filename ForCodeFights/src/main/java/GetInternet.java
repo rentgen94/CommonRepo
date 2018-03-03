@@ -60,7 +60,7 @@ public class GetInternet {
             Robot robot = new Robot();
 //            robot.delay(5000);
 //            PointerInfo a = MouseInfo.getPointerInfo();
-//            Point b = a.getLocation();
+//            Pt b = a.getLocation();
 //            System.out.println("x: " + b.getX() + " y: " + b.getY());
             moveAndPress(robot, 81, 746);
             moveAndPress(robot, 29, 14);

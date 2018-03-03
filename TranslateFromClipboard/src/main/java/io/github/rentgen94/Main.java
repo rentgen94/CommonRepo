@@ -1,6 +1,5 @@
 package io.github.rentgen94;
 
-import io.github.rentgen94.Controllers.RootLayoutController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,7 +13,6 @@ import java.io.IOException;
  */
 public class Main extends Application {
     private Stage primaryStage;
-    private Pane rootLayout;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -25,11 +23,12 @@ public class Main extends Application {
     }
 
     private void initRootLayout() {
+        Pane rootLayout;
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/View/RootLayout.fxml"));
             rootLayout = loader.load();
 
-            RootLayoutController controller = loader.getController();
+            //RootLayoutController controller = loader.getController();
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);

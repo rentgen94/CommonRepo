@@ -1,0 +1,239 @@
+set nocompatible      "Latest Vim Settings/options.
+
+so c:/Program Files (x86)/Vim/plugins.vim
+
+
+"enable python3 support
+let g:python3 = "C:\Program Files (x86)\Python36-32\python.exe"
+let g:jsx_pragma_required = 0
+
+"-------------------My settings-------------------"
+set encoding=utf-8                " Set file encoding
+set fileencoding=utf-8            " Set file encoding
+set noerrorbells visualbell t_vb= " No damn bells!
+"set autowriteall                  " Autosave
+
+" If write this words they higlighted
+:syn keyword Keyword todo rewrite done ToDo TODO
+
+
+
+
+"---------------Visuals---------------"
+colorscheme atom-dark             " Set colorsheme
+set t_CO=256                      " Use 256 colors. This is useful for Terminal Vim
+set guifont=Consolas:h12          " Set font in vim
+set linespace=4                   " Set space between lines
+set ruler                         " Show cursor line and column
+"set statusline+=col:\ %c,        " Show cursor column in status line
+
+"set guioptions-=e                " Remove gui tabs
+set guioptions-=T                 " Remove tools
+"set guioptions-=r                " Remove scroll
+"set guioptions-=R                " Remove scroll
+"set guioptions-=l                " Remove scroll
+"set guioptions-=L                " Remove scroll
+
+hi vertsplit guifg=bg guibg=bg    " Get rid of ugly split borders.
+set colorcolumn=80                " draw line at 80 column
+
+"if has('gui_running')
+"	set background=dark
+"else
+"   set background=dark
+"endif
+
+
+
+
+"---------------General Settings---------------"
+set backspace=indent,eol,start    "Make backspace behave like every other editor.
+let mapleader = ','               "Replace <Leader>
+
+set nowrap
+syntax enable
+
+set langmenu=en_US                "Set menu language
+let $LANG='en_US'
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
+set number                        "Set line numbers
+set numberwidth=3
+
+
+
+
+
+"--------------Search--------------"
+set hlsearch
+" Higlight when typing word.
+set incsearch
+
+
+
+
+"-------------Split Management--------------"
+set splitbelow 				"Make splits default to below...
+set splitright				"And to the right. This feels more natural.
+
+"We'll set simpler mappings to switch between splits.
+nmap <C-J> <C-W><C-J>
+nmap <C-K> <C-W><C-K>
+nmap <C-H> <C-W><C-H>
+nmap <C-L> <C-W><C-L>
+
+
+
+
+"--------------Mappings--------------"
+" Set F2 to save file
+inoremap <F2> <Esc>:w<CR>
+map <F2> <Esc>:w<CR>
+
+" Set Ctrl+C to save in buffer
+vmap <C-c> "*y
+
+"set Tab for nextTab
+nnoremap <TAB> :tabnext<CR>
+
+" Set Ctrl + space to complete tag
+imap <C-Space> </<C-X><C-O>
+
+" Set Ctrl+A to save 
+map <C-a> ggVG
+imap <C-a> ggVG
+vmap <C-a> ggVG
+
+" по звездочке не прыгать на следующее найденное, а просто подсветить
+nnoremap * *N
+
+" Add simple highlight removal.
+nnoremap <Leader><space> :nohlsearch<CR>
+
+" Higlight in VisualMode with *
+vnoremap * y :execute ":let @/=@\""<CR> :execute "set hlsearch"<CR>
+
+" Make it easy to edit the Vimrc file.
+nmap <Leader>ev :tabedit $MYVIMRC<cr>/Specific<cr>n
+nmap <Leader>es :e c:/Files_For_Windows/.vim/snippets/
+
+"Make NERDTree easier to toggle.
+nmap <Leader>1 :NERDTreeToggle<cr>
+
+nmap <Leader>r :CtrlPBufTag<cr>
+nmap <Leader>e :CtrlPMRUFiles<cr>
+
+
+
+
+"-------------Plugins--------------"
+"/
+"/ CtrlP
+"/
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:30,results:30'
+"let g:ctrlp_working_path_mode = 0
+
+"/
+"/ greplace.vim
+"/
+set grepprg=ag                              " We want to use AG for the search
+let g:grep_cmd_opts = '--line-numbers --noheading'
+
+
+"/
+"/ UltiSnips
+"/
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-q>"
+"let g:UltiSnipsJumpForwardTrigger="<c-j>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsSnippetsDir='c:\Files_For_Windows\.vim\snippets\'
+
+"/
+"/ Markdown
+"/
+let g:previm_open_cmd = 'chrome'
+augroup PrevimSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+
+
+"-------------------Work-Specific-------------------"
+nmap <Leader>wo :NERDTreeToggle<cr>:OpenBookmark work<cr>cd
+nmap <Leader>sf :CtrlP<cr>
+nmap gs         :Gsearch<cr>
+nmap <Leader><Leader>r :!ctags -R --exclude=.git --exclude=node_modules
+
+
+
+
+
+"--------------Format Text--------------"
+" Settings to tab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set smarttab
+set expandtab
+set smartindent
+
+
+
+
+
+"--------------Undo/Rendo Files--------------"
+set undofile
+set undodir=C:/Files_For_Windows/.vim/undo//
+set undolevels=1000
+set backup
+set backupdir=C:/Files_For_Windows/.vim/backup//
+
+
+
+
+"set diffexpr=MyDiff()
+"function MyDiff()
+"  let opt = '-a --binary '
+"  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+"  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+"  let arg1 = v:fname_in
+"  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+"  let arg2 = v:fname_new
+"  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+"  let arg3 = v:fname_out
+"  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+"  let eq = ''
+"  if $VIMRUNTIME =~ ' '
+"    if &sh =~ '\<cmd'
+"      let cmd = '"' . $VIMRUNTIME . '\diff"'
+"      let eq = '""'
+"    else
+"      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+"    endif
+"  else
+"    let cmd = $VIMRUNTIME . '\diff'
+"  endif
+"  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+"endfunction
+
+
+
+
+"-------------Auto-Commands--------------"
+
+"Automatically source the Vimrc file on save.
+augroup autosourcing
+	autocmd!
+	autocmd BufWritePost _vimrc source %
+augroup END
+
+
+
+
+"-----------Notes And Tips--------------"
+" - Press 'zz' to isntantly center the line where the cursor is located.
+" - For use buffer tag in CtrlP you must install Exubernat Ctags
+" ctags -R --exclude=.git --exclude=node_modules

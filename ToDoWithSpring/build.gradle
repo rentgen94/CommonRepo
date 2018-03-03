@@ -1,14 +1,32 @@
-def mainClass = "io.github.rentgen94.Main"
+def mainClass = "io.github.rentgen94.JettyApplication"
 
 dependencies {
     testCompile rootProject.libraries.junit
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.springframeforw.security:spring-security-test")
+
     compile rootProject.libraries.log4j
-    compile rootProject.libraries.spring
+
+    compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter-websocket")
+    compile("org.springframework:spring-messaging")
+
+    compile("org.hibernate:hibernate-core:5.2.11.Final")
+    //compile("org.hibernate:hibernate-entitymanager:5.2.11.Final")
+
+    runtime("org.postgresql:postgresql")
+
 }
 
 jar {
-    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-    manifest { attributes 'Main-Class': mainClass }
+    baseName = 'gs-spring-boot'
+    version =  '0.1.0'
 }
 
 apply plugin: 'application'
