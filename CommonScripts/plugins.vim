@@ -27,13 +27,21 @@ Plugin 'mxw/vim-jsx'
 Plugin 'fatih/vim-go'
 
 "-------------------ColorScheme-------------------"
+"After install move to .vim/colors
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'dracula/Vim'
+Plugin 'chriskempson/tomorrow-theme'
+"Needed fonts from https://github.com/belluzj/fantasque-sans
+Plugin 'morhetz/gruvbox'
+
+"-------------------StatusLine-------------------"
+"Install fonts! https://github.com/powerline/fonts
+Plugin 'vim-airline/vim-airline'
 
 "-------------------Tree-------------------"
 Plugin 'scrooloose/nerdtree'
 
-" WARNING!!! Next plugin needs to install <ctags>
+" WARNING!!! Next plugin needs to install <exuberant-ctags>
 "-------------------Ctrl-P-------------------"
 Plugin 'ctrlpvim/ctrlp.vim'
 
@@ -74,3 +82,12 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+"
+
+
+
+"-----------------------------------INSTALL------------------------------------
+"If install colorshemes move them to .vim/colors
+"Install fonts! https://github.com/powerline/fonts
+"Use for ctags <exuberant-ctags>
+"Use for project wide search <the_silver_searcher>

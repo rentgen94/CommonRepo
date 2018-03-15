@@ -95,7 +95,22 @@ map <F2> <Esc>:w<CR>
 vmap <C-c> "*y
 
 "set Tab for nextTab
-nnoremap <TAB> :tabnext<CR>
+nnoremap <TAB> :execute NextTab()<CR>
+function! NextTab()
+    if (len(range(tabpagenr('$')))!=1)
+        return ":tabnext"
+    else
+        return ":bn"
+    endif
+endfunction
+nnoremap <S-TAB> :execute PrevTab()<CR>
+function! PrevTab()
+    if (len(range(tabpagenr('$')))!=1)
+        return ":tabprev"
+    else
+        return ":bp"
+    endif
+endfunction
 
 " Set Ctrl + space to complete tag
 imap <C-Space> </<C-X><C-O>
@@ -160,6 +175,14 @@ augroup PrevimSettings
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 
+"/
+"/ Vim_Airlane
+"/
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+
+
 
 "-------------------Work-Specific-------------------"
 nmap <Leader>wo :NERDTreeToggle<cr>:OpenBookmark work<cr>cd
@@ -190,34 +213,37 @@ set undodir=C:/Files_For_Windows/.vim/undo//
 set undolevels=1000
 set backup
 set backupdir=C:/Files_For_Windows/.vim/backup//
+set directory=C:/Files_For_Windows/.vim/swp//
 
 
 
 
-"set diffexpr=MyDiff()
-"function MyDiff()
-"  let opt = '-a --binary '
-"  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-"  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-"  let arg1 = v:fname_in
-"  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-"  let arg2 = v:fname_new
-"  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-"  let arg3 = v:fname_out
-"  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-"  let eq = ''
-"  if $VIMRUNTIME =~ ' '
-"    if &sh =~ '\<cmd'
-"      let cmd = '"' . $VIMRUNTIME . '\diff"'
-"      let eq = '""'
-"    else
-"      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-"    endif
-"  else
-"    let cmd = $VIMRUNTIME . '\diff'
-"  endif
-"  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-"endfunction
+set diffexpr=MyDiff()
+if !exists("*MyDiff")
+    function MyDiff()
+      let opt = '-a --binary '
+      if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+      if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+      let arg1 = v:fname_in
+      if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+      let arg2 = v:fname_new
+      if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+      let arg3 = v:fname_out
+      if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+      let eq = ''
+      if $VIMRUNTIME =~ ' '
+        if &sh =~ '\<cmd'
+          let cmd = '"' . $VIMRUNTIME . '\diff"'
+          let eq = '""'
+        else
+          let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+        endif
+      else
+        let cmd = $VIMRUNTIME . '\diff'
+      endif
+      silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+    endfunction
+endif
 
 
 
