@@ -17,9 +17,7 @@ import java.awt.datatransfer.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
+import java.net.*;
 
 /**
  * Created by Let's_rock on 20.07.2017.
@@ -48,6 +46,7 @@ public class RootLayoutController implements ClipboardOwner {
         toLang.setItems(langs);
         toLang.getSelectionModel().select(1);
         textArea.setText("First init");
+        translationArea.setWrapText(true);
         checkWrap.selectedProperty().addListener((observable, oldValue, newValue) -> {
             textArea.setWrapText(newValue);
             translationArea.setWrapText(newValue);
@@ -87,7 +86,9 @@ public class RootLayoutController implements ClipboardOwner {
                 "&dt=t&q=" + URLEncoder.encode(word, "UTF-8");
 
         URL obj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("192.168.2.1", 8080));
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection(proxy);
+
         con.setRequestProperty("User-Agent", "Mozilla/5.0");
 
         BufferedReader in = new BufferedReader(
